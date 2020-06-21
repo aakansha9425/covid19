@@ -28,7 +28,6 @@ public class Districtadapter extends RecyclerView.Adapter<DistrictViewHolder> {
         this.c = c;
     }
 
-
     @NonNull
     @Override
     public DistrictViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,16 +37,14 @@ public class Districtadapter extends RecyclerView.Adapter<DistrictViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull DistrictViewHolder holder, int position) {
-        for (int i = 0; i < districtDetails.size(); i++) {
-            holder.districtname.setText(districtDetails.get(position).getDistrict());
-            holder.confirmedcase.setText(districtDetails.get(position).getActive());
-
-        }
+        DistrictDatum districtDatum = districtDetails.get(position);
+        holder.districtname.setText(districtDatum.getDistrict());
+        holder.confirmedcase.setText(String.valueOf(districtDatum.getActive()));
     }
 
     @Override
     public int getItemCount() {
         return districtDetails.size();
-        
+
     }
 }

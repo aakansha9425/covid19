@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.covid_19.Adapter.Districtadapter;
 import com.example.covid_19.Adapter.StatewiseAdapter;
@@ -32,9 +33,9 @@ public class DistrictActivity extends AppCompatActivity {
         statename = findViewById(R.id.statename2);
         district_recycler_view=findViewById(R.id.district_recycler_view);
         final String name = getIntent().getStringExtra(Intent.EXTRA_TEXT);
-        statename.setText(name);
+        statename.setText(name +"'s districts");
         modelview = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(ManageApi.class);
-        modelview.getDistricWiseData();
+        modelview.getDistricWiseData(this , name);
         TotalObserverandsetter();
     }
 

@@ -80,15 +80,8 @@ public class talk_to_us extends AppCompatActivity {
 
         } else {
 
-            if (sym1.isChecked()) {
-                setInfo_or_Alert(Covid1);
 
-            } else if (sym2.isChecked()) {
-                setInfo_or_Alert(Covid1);
 
-            } else if (sym3.isChecked()) {
-                setInfo_or_Alert(Covid1);
-            }
 
             if (sym2.isChecked() && sym1.isChecked()) {
                 setInfo_or_Alert(Covid2);
@@ -102,7 +95,18 @@ public class talk_to_us extends AppCompatActivity {
                 setInfo_or_Alert(Covid2);
 
             }
+
+            if (sym1.isChecked()) {
+                setInfo_or_Alert(Covid1);
+
+            } else if (sym2.isChecked()) {
+                setInfo_or_Alert(Covid1);
+
+            } else if (sym3.isChecked()) {
+                setInfo_or_Alert(Covid1);
+            }
         }
+
 
     }
 }

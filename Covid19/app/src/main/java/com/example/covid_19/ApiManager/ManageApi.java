@@ -1,6 +1,8 @@
 package com.example.covid_19.ApiManager;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -50,24 +52,33 @@ public class ManageApi extends ViewModel {
         });
     }
 
-    public void getDistricWiseData() {
+    public void getDistricWiseData(final Context context, final String statename) {
         final JsonPlaceHolderApi jsonPlaceHolderApi = RetroClient.getRetroCient("https://api.covid19india.org/").create(JsonPlaceHolderApi.class);
-        final Call<Example> districtdatacall = jsonPlaceHolderApi.getdistricts();
+        final Call<List<Example>> districtdatacall = jsonPlaceHolderApi.getdistricts();
 
-        districtdatacall.enqueue(new Callback<Example>() {
+        districtdatacall.enqueue(new Callback<List<Example>>() {
             @Override
-            public void onResponse(@NonNull Call<Example> call, @NonNull Response<Example> response) {
+            public void onResponse(@NonNull Call<List<Example>> call, @NonNull Response<List<Example>> response) {
                 assert response.body() != null;
-                //stateDetails = response.body().getStatewise();
-                getDistrictLiveData.postValue(response.body().getDistrictData());
-                Log.e("getDistrict",response.body().getDistrictData().toString());
+
+                List<Example> examples = response.body();
+                for (int i = 0; i < examples.size(); i++) {
+                    if (examples.get(i).getState().equalsIgnoreCase(statename)){
+                        getDistrictLiveData.postValue(examples.get(i).getDistrictData());
+                    }
+                }
+               // Toast.makeText(context, String.valueOf(examples.size()), Toast.LENGTH_SHORT).show();
+
+
+                //getDistrictLiveData.postValue(response.body().get(po));
+                //Log.e("getDistrict",response.body().getDistrictData().toString());
                 // getLiveTotal.postValue(response.body().getTested());
 
 
             }
 
             @Override
-            public void onFailure(Call<Example> call, Throwable t) {
+            public void onFailure(Call<List<Example>> call, Throwable t) {
 
             }
 
@@ -75,33 +86,29 @@ public class ManageApi extends ViewModel {
         });
     }
 
-       public void getTotalDetails()
-       {
-           final JsonPlaceHolderApi jsonPlaceHolderApi = RetroClient.getRetroCient("https://api.covid19india.org/").create(JsonPlaceHolderApi.class);
+    public void getTotalDetails() {
+        final JsonPlaceHolderApi jsonPlaceHolderApi = RetroClient.getRetroCient("https://api.covid19india.org/").create(JsonPlaceHolderApi.class);
 
-           final Call<State> getTotalcall = jsonPlaceHolderApi.getTotaltested();
-           getTotalcall.enqueue(new Callback<State>() {
-               @Override
-               public void onResponse(Call<State> call, Response<State> response) {
+        final Call<State> getTotalcall = jsonPlaceHolderApi.getTotaltested();
+        getTotalcall.enqueue(new Callback<State>() {
+            @Override
+            public void onResponse(Call<State> call, Response<State> response) {
 
-                   //stateDetails = response.body().getStatewise();
-                   // stateLiveData.postValue(response.body().getStatewise());
-                   if(response.body() == null)
-                   {
-                       return;
-                   }
-                   else {
-                       getLiveTotal.postValue(response.body().getTested());
-                   }
-               }
+                //stateDetails = response.body().getStatewise();
+                // stateLiveData.postValue(response.body().getStatewise());
+                if (response.body() == null) {
+                    return;
+                } else {
+                    getLiveTotal.postValue(response.body().getTested());
+                }
+            }
 
-               @Override
-               public void onFailure(Call<State> call, Throwable t) {
+            @Override
+            public void onFailure(Call<State> call, Throwable t) {
 
-               }
-           });
-       }
-
+            }
+        });
+    }
 
 
     public MutableLiveData<List<Statewise>> getStateLiveData() {
@@ -110,6 +117,7 @@ public class ManageApi extends ViewModel {
         }
         return stateLiveData;
     }
+
     public MutableLiveData<List<Tested>> GetLiveTotal() {
         if (getLiveTotal == null) {
             getLiveTotal = new MutableLiveData<List<Tested>>();

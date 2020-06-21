@@ -15,7 +15,7 @@ public TextView districtname;
     public DistrictViewHolder(@NonNull View itemView) {
         super(itemView);
         this.districtname=itemView.findViewById(R.id.district_name);
-        this.confirmedcase=itemView.findViewById(R.id.confirmedindistrict);
+        this.confirmedcase=itemView.findViewById(R.id.confirmed_cases);
         itemView.setOnClickListener(this);
 
     }

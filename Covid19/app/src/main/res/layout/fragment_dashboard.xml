@@ -57,7 +57,7 @@
                                     android:layout_width="150dp"
                                     android:layout_height="150dp"
                                     android:layout_centerInParent="true"
-                                    android:background="@drawable/help"
+                                    android:background="@drawable/talk_logo"
                                     android:padding="23dp"
                                     android:textColor="#77b8e5"
                                     android:textStyle="bold" />
@@ -94,10 +94,119 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_centerInParent="true"
-                                    android:background="@drawable/cheeckup"
+                                    android:background="@drawable/hos_logo"
                                     android:padding="23dp"
                                     android:textColor="#77b8e5"
                                     android:textStyle="bold" />
+
+
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <androidx.cardview.widget.CardView
+
+                            android:id="@+id/who_ins"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            card_view:cardCornerRadius="30dp"
+
+                            card_view:cardBackgroundColor="#E0FFFF"
+                            card_view:cardElevation="10dp"
+                            card_view:cardUseCompatPadding="true">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_margin="10dp"
+                                android:layout_height="wrap_content">
+
+
+                                <Button
+                                    android:id="@+id/who_ins_btn"
+                                    android:layout_width="150dp"
+                                    android:layout_height="150dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/ins_logo"
+                                    android:padding="23dp"
+                                    android:textColor="#77b8e5"
+                                    android:textStyle="bold" />
+
+
+
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <androidx.cardview.widget.CardView
+
+                            android:id="@+id/diet"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            card_view:cardCornerRadius="30dp"
+
+                            card_view:cardBackgroundColor="#E0FFFF"
+                            card_view:cardElevation="10dp"
+                            card_view:cardUseCompatPadding="true">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_margin="10dp"
+                                android:layout_height="wrap_content">
+
+
+                                <Button
+                                    android:id="@+id/diet_btn"
+                                    android:layout_width="150dp"
+                                    android:layout_height="150dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/diet_logo"
+                                    android:padding="23dp"
+                                    android:textColor="#77b8e5"
+                                    android:textStyle="bold" />
+
+
+
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+
+                            android:id="@+id/website"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            card_view:cardCornerRadius="30dp"
+
+                            card_view:cardBackgroundColor="#E0FFFF"
+                            card_view:cardElevation="10dp"
+                            card_view:cardUseCompatPadding="true">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_margin="10dp"
+                                android:layout_height="wrap_content">
+
+
+                                <Button
+                                    android:id="@+id/website_btn"
+                                    android:layout_width="150dp"
+                                    android:layout_height="150dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/virus"
+                                    android:padding="23dp"
+                                    android:textColor="#77b8e5"
+                                    android:textStyle="bold" />
+
 
 
                             </RelativeLayout>
@@ -115,7 +224,7 @@
                 android:layout_height="3dp"
                 android:id="@+id/seperator"
                 android:layout_below="@+id/image"
-                android:background="#E0FFFF"/>
+                android:background="#BEF2F3F6"/>
 
 
             <RelativeLayout

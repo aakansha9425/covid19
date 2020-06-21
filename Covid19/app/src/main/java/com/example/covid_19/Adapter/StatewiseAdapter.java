@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,7 +43,8 @@ public class StatewiseAdapter extends RecyclerView.Adapter<StatewiseHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull StatewiseHolder holder, final int position) {
-        for (int i = 0; i < stateDetails.size(); i++) {
+
+
             holder.statename.setText(stateDetails.get(position).getState());
             holder.activecases.setText(stateDetails.get(position).getActive());
 
@@ -51,16 +53,23 @@ public class StatewiseAdapter extends RecyclerView.Adapter<StatewiseHolder> {
             holder.recoveredcase.setText(stateDetails.get(position).getRecovered());
 
             holder.deathcase.setText(stateDetails.get(position).getDeaths());
-        }
+
 
         holder.state.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String statename2 = stateDetails.get(position).getState();
-                Intent intent = new Intent(c, DistrictActivity.class);
-                intent.putExtra(Intent.EXTRA_TEXT, statename2);
-                c.startActivity(intent); // put context infront
-                //Toast.makeText(v.getContext(), stateDetails.get(position).getState() ,  Toast.LENGTH_SHORT).show();
+                if(stateDetails.get(position).getState().equalsIgnoreCase("Total")) {
+                    Toast.makeText(c, "Click on particular state name", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Intent intent = new Intent(c, DistrictActivity.class);
+                    intent.putExtra(Intent.EXTRA_TEXT, statename2);
+                    c.startActivity(intent); // put context infront
+                }
+
+              //  Toast.makeText(v.getContext(), String.valueOf(stateDetails.get(position)) ,  Toast.LENGTH_SHORT).show();
             }
         });
 
