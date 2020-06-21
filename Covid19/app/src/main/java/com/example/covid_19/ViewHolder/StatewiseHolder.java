@@ -1,4 +1,4 @@
-package com.example.covid_19;
+package com.example.covid_19.ViewHolder;
 
 import android.view.View;
 import android.widget.LinearLayout;
@@ -9,9 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.covid_19.R;
+import com.example.covid_19.RecyclerViewitemClickListner;
+
 public class StatewiseHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    TextView activecases,confirmedcases,deathcase,recoveredcase,statename;
+    public TextView activecases;
+    public TextView confirmedcases;
+    public TextView deathcase;
+    public TextView recoveredcase;
+    public TextView statename;
      public RelativeLayout state;
      RecyclerViewitemClickListner recyclerViewitemClickListner;
 

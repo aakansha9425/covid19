@@ -31,7 +31,7 @@
                    android:layout_height="wrap_content"
                    android:layout_centerHorizontal="true"
                    android:text="State name "
-                   android:textColor="#000"
+                   android:textColor="#77b8e5"
                    android:textSize="15sp" />
 
                <LinearLayout

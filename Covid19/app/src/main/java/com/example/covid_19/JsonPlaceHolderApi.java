@@ -1,7 +1,8 @@
 package com.example.covid_19;
 
-import com.example.covid_19.CovidApiPojo.District.StateNameToGetDistrict;
 import com.example.covid_19.CovidApiPojo.State;
+import com.example.covid_19.District.DistrictDatum;
+import com.example.covid_19.District.Example;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -12,6 +13,6 @@ public interface JsonPlaceHolderApi {
     Call<State> getstatedetails();
     @GET("data.json")
     Call<State> getTotaltested();
-    @GET("state_district_wise.json")
-    Call<Object> getdistricts();
+    @GET("v2/state_district_wise.json")
+    Call<Example> getdistricts();
 }

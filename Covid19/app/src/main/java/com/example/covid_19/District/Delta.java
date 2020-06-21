@@ -1,16 +1,10 @@
-package com.example.covid_19.CovidApiPojo.District;
+package com.example.covid_19.District;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DistrictName {
+public class Delta {
 
-@SerializedName("notes")
-@Expose
-private String notes;
-@SerializedName("active")
-@Expose
-private Integer active;
 @SerializedName("confirmed")
 @Expose
 private Integer confirmed;
@@ -20,25 +14,6 @@ private Integer deceased;
 @SerializedName("recovered")
 @Expose
 private Integer recovered;
-@SerializedName("delta")
-@Expose
-private Delta delta;
-
-public String getNotes() {
-return notes;
-}
-
-public void setNotes(String notes) {
-this.notes = notes;
-}
-
-public Integer getActive() {
-return active;
-}
-
-public void setActive(Integer active) {
-this.active = active;
-}
 
 public Integer getConfirmed() {
 return confirmed;
@@ -62,14 +37,6 @@ return recovered;
 
 public void setRecovered(Integer recovered) {
 this.recovered = recovered;
-}
-
-public Delta getDelta() {
-return delta;
-}
-
-public void setDelta(Delta delta) {
-this.delta = delta;
 }
 
 }

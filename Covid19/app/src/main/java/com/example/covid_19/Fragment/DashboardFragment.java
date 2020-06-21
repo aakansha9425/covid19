@@ -1,5 +1,7 @@
 package com.example.covid_19.Fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -19,6 +21,7 @@ import com.example.covid_19.CovidApiPojo.CasesTimeSeries;
 import com.example.covid_19.CovidApiPojo.Statewise;
 import com.example.covid_19.CovidApiPojo.Tested;
 import com.example.covid_19.R;
+import com.example.covid_19.talk_to_us;
 
 import java.util.List;
 
@@ -68,14 +71,21 @@ public class DashboardFragment extends Fragment {
         talk_to_us.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mainView.getContext(), "hiii talk to us ", Toast.LENGTH_SHORT).show();
+                Intent intent= new Intent(getContext(), talk_to_us.class);
+                startActivity(intent);
+
             }
         });
 
         nearby_hospital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mainView.getContext(), "hiii nearby to us ", Toast.LENGTH_SHORT).show();
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=hospitals");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                }
             }
         });
 

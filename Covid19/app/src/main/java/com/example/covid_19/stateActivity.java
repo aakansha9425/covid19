@@ -12,8 +12,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import com.example.covid_19.Adapter.StatewiseAdapter;
 import com.example.covid_19.ApiManager.ManageApi;
 import com.example.covid_19.CovidApiPojo.Statewise;
 

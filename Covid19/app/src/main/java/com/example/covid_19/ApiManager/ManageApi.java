@@ -11,6 +11,8 @@ import com.example.covid_19.CovidApiPojo.CasesTimeSeries;
 import com.example.covid_19.CovidApiPojo.State;
 import com.example.covid_19.CovidApiPojo.Statewise;
 import com.example.covid_19.CovidApiPojo.Tested;
+import com.example.covid_19.District.DistrictDatum;
+import com.example.covid_19.District.Example;
 import com.example.covid_19.JsonPlaceHolderApi;
 import com.example.covid_19.RetrofitClient.RetroClient;
 
@@ -24,7 +26,7 @@ public class ManageApi extends ViewModel {
 
     private MutableLiveData<List<Statewise>> stateLiveData;
     private MutableLiveData<List<Tested>> getLiveTotal;
-    private MutableLiveData<Object> getDistrictJson;
+    private MutableLiveData<List<DistrictDatum>> getDistrictLiveData;
 
 
     public void getStateDetails() {
@@ -50,24 +52,26 @@ public class ManageApi extends ViewModel {
 
     public void getDistricWiseData() {
         final JsonPlaceHolderApi jsonPlaceHolderApi = RetroClient.getRetroCient("https://api.covid19india.org/").create(JsonPlaceHolderApi.class);
-        final Call<Object> stateDetailsCall = jsonPlaceHolderApi.getdistricts();
+        final Call<Example> districtdatacall = jsonPlaceHolderApi.getdistricts();
 
-        stateDetailsCall.enqueue(new Callback<Object>() {
+        districtdatacall.enqueue(new Callback<Example>() {
             @Override
-            public void onResponse(@NonNull Call<Object> call, @NonNull Response<Object> response) {
+            public void onResponse(@NonNull Call<Example> call, @NonNull Response<Example> response) {
                 assert response.body() != null;
                 //stateDetails = response.body().getStatewise();
-                Log.e("ERRORCHECK" , response.body().toString());
-                getDistrictJson.postValue(response.body());
+                getDistrictLiveData.postValue(response.body().getDistrictData());
+                Log.e("getDistrict",response.body().getDistrictData().toString());
                 // getLiveTotal.postValue(response.body().getTested());
 
 
             }
 
             @Override
-            public void onFailure(Call<Object> call, Throwable t) {
-                Log.e("ERRORCHECK" , t.toString());
+            public void onFailure(Call<Example> call, Throwable t) {
+
             }
+
+
         });
     }
 
@@ -113,10 +117,10 @@ public class ManageApi extends ViewModel {
         return getLiveTotal;
     }
 
-    public MutableLiveData<Object> GetDistrictJson() {
-        if (getDistrictJson == null) {
-            getDistrictJson = new MutableLiveData<Object>();
+    public MutableLiveData<List<DistrictDatum>> getDistrictLiveData() {
+        if (getDistrictLiveData == null) {
+            getDistrictLiveData = new MutableLiveData<List<DistrictDatum>>();
         }
-        return getDistrictJson;
+        return getDistrictLiveData;
     }
 }

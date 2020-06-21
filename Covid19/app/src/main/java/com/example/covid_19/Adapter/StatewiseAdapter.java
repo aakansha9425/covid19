@@ -1,16 +1,19 @@
-package com.example.covid_19;
+package com.example.covid_19.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.covid_19.CovidApiPojo.Statewise;
+import com.example.covid_19.DistrictActivity;
+import com.example.covid_19.R;
+import com.example.covid_19.RecyclerViewitemClickListner;
+import com.example.covid_19.ViewHolder.StatewiseHolder;
 
 import java.util.ArrayList;
 import java.util.List;

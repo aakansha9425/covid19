@@ -18,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // This method will be executed once the timer is over
-                Intent i = new Intent(SplashActivity.this, Covid19Activity.class);
+                Intent i = new Intent(SplashActivity.this, VerificationPhone.class);
                 startActivity(i);
                 finish();
             }
